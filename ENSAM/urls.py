@@ -13,7 +13,9 @@ admin.autodiscover()
 urlpatterns = [
     path("sitemap.xml", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
     path('en/etudiant/ent/', ent, name='external_redirect'),
+    path('en/ent/', ent, name='external_redirect'),
     path('en/e-learning/mooc-universite-hassan-2/', mooc_universite, name='mooc_universite'),
+    path('en/bibliotheque/',biblio, name='biblio'),
     path('en/index/', index, name='index'),
     path('en/afficher/<int:article_id>', afficher, name='afficher'),
     path('en/', home, name='afficher'),

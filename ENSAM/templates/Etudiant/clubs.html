@@ -3,250 +3,493 @@
 {% load static %}
 {% block content %}
 <style>
-    .header {
-        position: relative;
-        border-bottom-right-radius: 50%;
-        background: #07689f;
-        overflow: hidden;
-        word-wrap: break-word;
-        min-height: 400px;
-        padding: 0 50px;
-        max-height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    .demo {
+        font-family: 'Noto Sans', sans-serif;
     }
 
-    .header .title {
-        text-align: center;
-        margin: 0 auto;
-        width: 60%;
-        height: 100%;
+    .panel {
+        background: linear-gradient(to right, #2980b9, #2c3e50);
+        padding: 0;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.05), 0 0 0 10px rgba(0, 0, 0, 0.05);
     }
 
-    .header .heading {
-        font-weight: 900;
-        color: #fafafa;
-        font-size: 45px;
+    .panel .panel-heading {
+        padding: 20px 15px;
+        border-radius: 10px 10px 0 0;
+        margin: 0;
     }
 
-    @media screen and (max-width: 890px) {
-        .header .heading {
-            font-size: 30px;
-        }
-    }
-
-    .header .description {
+    .panel .panel-heading .title {
         color: #fff;
+        font-size: 28px;
+        font-weight: 500;
+        text-transform: capitalize;
+        line-height: 40px;
+        margin: 0;
+    }
+
+    .panel .panel-heading .btn {
+        color: rgba(255, 255, 255, 0.5);
+        background: transparent;
         font-size: 16px;
+        text-transform: capitalize;
+        border: 2px solid #fff;
+        border-radius: 50px;
+        transition: all 0.3s ease 0s;
     }
 
-    @media screen and (max-width: 768px) {
-        .header {
-            padding: 0 0;
+    .panel .panel-heading .btn:hover {
+        color: #fff;
+        text-shadow: 3px 3px rgba(255, 255, 255, 0.2);
+    }
+
+    .panel .panel-heading .form-control {
+        color: #fff;
+        background-color: transparent;
+        width: 35%;
+        height: 40px;
+        border: 2px solid #fff;
+        border-radius: 20px;
+        display: inline-block;
+        transition: all 0.3s ease 0s;
+    }
+
+    .panel .panel-heading .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: none;
+        outline: none;
+    }
+
+    .panel .panel-heading .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .panel .panel-body {
+        padding: 0;
+    }
+
+    .panel .panel-body .table thead tr th {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.2);
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding: 12px;
+        border: none;
+    }
+
+    .panel .panel-body .table tbody tr td {
+        color: #fff;
+        font-size: 15px;
+        padding: 10px 12px;
+        vertical-align: middle;
+        border: none;
+    }
+
+    .panel .panel-body .table tbody tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .panel .panel-body .table tbody .action-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .panel .panel-body .table tbody .action-list li {
+        display: inline-block;
+        margin: 0 5px;
+    }
+
+    .panel .panel-body .table tbody .action-list li a {
+        color: #fff;
+        font-size: 15px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease 0s;
+    }
+
+    .panel .panel-body .table tbody .action-list li a:hover {
+        text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .panel .panel-body .table tbody .action-list li a:before,
+    .panel .panel-body .table tbody .action-list li a:after {
+        content: attr(data-tip);
+        color: #fff;
+        background-color: #111;
+        font-size: 12px;
+        padding: 5px 7px;
+        border-radius: 4px;
+        text-transform: capitalize;
+        display: none;
+        transform: translateX(-50%);
+        position: absolute;
+        left: 50%;
+        top: -32px;
+        transition: all 0.3s ease 0s;
+    }
+
+    .panel .panel-body .table tbody .action-list li a:after {
+        content: '';
+        height: 15px;
+        width: 15px;
+        padding: 0;
+        border-radius: 0;
+        transform: translateX(-50%) rotate(45deg);
+        top: -18px;
+        z-index: -1;
+    }
+
+    .panel .panel-body .table tbody .action-list li a:hover:before,
+    .panel .panel-body .table tbody .action-list li a:hover:after {
+        display: block;
+    }
+
+    .panel .panel-footer {
+        color: #fff;
+        background-color: transparent;
+        padding: 15px;
+        border: none;
+    }
+
+    .panel .panel-footer .col {
+        line-height: 35px;
+    }
+
+    .pagination {
+        margin: 0;
+    }
+
+    .pagination li a {
+        color: #fff;
+        background-color: transparent;
+        border: 2px solid transparent;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        line-height: 31px;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        margin: 0 3px;
+        border-radius: 50px;
+        transition: all 0.3s ease 0s;
+    }
+
+    .pagination li a:hover {
+        color: #fff;
+        background-color: transparent;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .pagination li a:focus,
+    .pagination li.active a,
+    .pagination li.active a:hover {
+        color: #fff;
+        background-color: transparent;
+        border-color: #fff;
+    }
+
+    .pagination li:first-child a,
+    .pagination li:last-child a {
+        border-radius: 50%;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .panel .panel-heading .title {
+            text-align: center;
+            margin: 0 0 10px;
         }
 
-        .header .title {
-            padding: 0 0;
-            width: 100%;
-        }
-
-        .header .description {
-            display: none;
+        .panel .panel-heading .btn_group {
+            text-align: center;
         }
     }
-    -------------------------------------------------------------*/
-.cta {
-  padding: 0;
-  margin-bottom: 60px;
-}
-
-.cta .container {
-  padding: 80px;
-  background: rgba(var(--color-secondary-rgb), 0.1);
-  border-radius: 15px;
-}
-
-@media (max-width: 992px) {
-  .cta .container {
-    padding: 60px;
-  }
-}
-
-.cta .content h3 {
-  color: var(--color-secondary);
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.cta .content h3 em {
-  font-style: normal;
-  position: relative;
-}
-
-.cta .content h3 em:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 10px;
-  height: 10px;
-  background: rgba(var(--color-primary-rgb), 0.5);
-  z-index: -1;
-}
-
-.cta .content p {
-  color: var(--color-secondary);
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.cta .content .cta-btn {
-  color: var(--color-white);
-  font-weight: 500;
-  font-size: 16px;
-  display: inline-block;
-  padding: 12px 40px;
-  border-radius: 5px;
-  transition: 0.5s;
-  margin-top: 10px;
-  background: rgba(var(--color-primary-dark-rgb), 0.9);
-}
-
-.cta .content .cta-btn:hover {
-  background: var(--color-primary);
-}
-
-.cta .img {
-  position: relative;
-}
-
-.cta .img:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(var(--color-white-rgb), 0.5);
-  border-radius: 15px;
-  transform: rotate(12deg);
-}
-
-.cta .img:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(var(--color-white-rgb), 0.9);
-  border-radius: 15px;
-  transform: rotate(6deg);
-}
-
-.cta .img img {
-  position: relative;
-  z-index: 3;
-  border-radius: 15px;
-}
 </style>
+
 <section class="header">
     <div class="title">
         <h1 class="heading mb-3">CLUBS ENSAM</h1>
-        <p class="description mb-5">En parallèle à la formation technique et la recherche scientifique, l’Ecole Nationale Supérieure des Arts et Métiers propose un panel d’activités culturelles, sportives, entrepreneuriales et sociales reconnaissant alors l’inestimable contribution de ces dernières dans la garantie d’une insertion professionnelle favorable des Gadz’arts se voulant polyvalents et ouverts sur le monde socio-culturel et socio-économique.
-Ayant diverses vocations, mais se démarquant tous par un esprit d’initiative, un profil d’ingénieur exigent et perfectionniste et aussi une conviction profonde pour leurs idées et leurs projets, les clubs ont ainsi vu le jour sous la tutelle de l’ADE jouant à présent un rôle primordial dans l’animation de la vie associative et festive de l’école.</p>
+        <p class="description mb-5">En parallèle à la formation technique et la recherche scientifique, l’Ecole
+            Nationale Supérieure des Arts et Métiers propose un panel d’activités culturelles, sportives,
+            entrepreneuriales et sociales reconnaissant alors l’inestimable contribution de ces dernières dans la
+            garantie d’une insertion professionnelle favorable des Gadz’arts se voulant polyvalents et ouverts sur le
+            monde socio-culturel et socio-économique.
+            Ayant diverses vocations, mais se démarquant tous par un esprit d’initiative, un profil d’ingénieur exigent
+            et perfectionniste et aussi une conviction profonde pour leurs idées et leurs projets, les clubs ont ainsi
+            vu le jour sous la tutelle de l’ADE jouant à présent un rôle primordial dans l’animation de la vie
+            associative et festive de l’école.</p>
     </div>
 </section>
-<section id="cta" class="cta">
-      <div style="background-color: white" class="container aos-init aos-animate" data-aos="zoom-out">
+<br><br>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-12">
+            <div class="panel">
+                <div class="panel-heading">
 
-        <div class="row g-5">
-
-          <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-            <h3>ENACTUS ENSAM CASABLANCA</h3>
-Enactus (Ex-SIFE) est une organisation mondiale fondée en 1975 et implantée dans 40 pays. Elle a pour mission de développer des partenariats élargis entre le monde des affaires et celui de l’enseignement supérieur afin de préparer les étudiants à contribuer substantiellement au développement de leur pays en tant que futurs entrepreneurs et leaders économiques.
-
-<br>Enactus Morocco compte annuellement, plus de 150 projets menés et encadrés par près de 1 500 étudiants de plus de 40 universités et écoles (EMI, EHTP, ENSAM, ENSIAS, IAV, INPT, ENCG….) au profit de près de 50000 bénéficiaires. La majeure partie de ces projets est orientée vers le développement de l’autonomie financière des populations nécessiteuses, notamment à travers des activités génératrices de revenu.
-
-
-              <br>Enactus ENSAM Casablanca est une filiale d’ENACTUS Morocco, créée en 2014 commençant avec 17 membres et atteignant 78 membres aujourd’hui, Nous représentons l’Ecole Nationale supérieure d’Arts et Métiers de Casablanca et nous voyons que porter un coup de main à ceux qui en ont besoin est un plaisir avant qu’il soit un devoir.
+                </div>
+                <div class="panel-body table-responsive">
 
 
-          </div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nom du club</th>
+                            <th>Abreviation</th>
+                            <th>Domaine d'activites</th>
+                            <th>Lien</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Club des inventions antiques</td>
+                            <td>CIA</td>
+                            <td>Technique</td>
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://gdsc.community.dev/university-of-hassan-ii-casablanca-ensam/"
+                                           data-tip="https://gdsc.community.dev/university-of-hassan-ii-casablanca-ensam/"><i
+                                            class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GOOGLE DEVELOPER STUDENTS CLUB ENSAM CASABLANCA</td>
+                            <td>GDSC</td>
+                            <td>Informatique</td>
 
-          <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
-            <div class="img">
-              <img src="http://www.ensam-casa.ma/assets/images/enactus-ensam-casa.jpeg" alt="" class="img-fluid">
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://gdsc.community.dev/university-of-hassan-ii-casablanca-ensam/"
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Club informatique art et metier (CIAM)</td>
+                            <td>CIAM</td>
+                            <td>Informatique</td>
+                            <td>
+
+                                <ul class="action-list">
+                                    <li><a href="https://instagram.com/club.ensam.informatique?igshid=YmMyMTA2M2Y="
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jeunes Leaders Marocains</td>
+                            <td>JLM</td>
+                            <td>Social, Entrepreneuriat</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://instagram.com/jlmensamcasa?igshid=YmMyMTA2M2Y="
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Rotaract</td>
+                            <td>ROTARACT</td>
+                            <td>Social</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://instagram.com/rotaract_ensam_casablanca?igshid=YmMyMTA2M2Y="
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ultras Arti Ragazzi</td>
+                            <td>Arti RAGAZZI</td>
+                            <td>Culturel</td>
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="#" data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A&M Mechatronics</td>
+                            <td>A&M Mechatronics</td>
+                            <td>Technique</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://instagram.com/aem.mechatronics?igshid=YmMyMTA2M2Y="
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Club Industriel de l'ENSAM CASA</td>
+                            <td>CIEC</td>
+                            <td>Technique</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://www.instagram.com/ciec_ensamcasablanca/" data-tip="edit"><i
+                                            class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Arts & Métiers Aeronautic</td>
+                            <td>A&M Aeronautics</td>
+                            <td>Technique</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://instagram.com/arts_et_metiers_aeronautics?igshid=YmMyMTA2M2Y="
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Club des étudiants étrangers de l'ENSAM Casablanca</td>
+                            <td>C3EC</td>
+                            <td>Culturel, Social</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://www.facebook.com/profile.php?id=100066814011136"
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Enactus</td>
+                            <td>ENACTUS</td>
+                            <td>Entrepreneuriat</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://www.linkedin.com/in/enactus-ensam-casablanca-41160421b"
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Forum des entreprises ENSAM Casablanca</td>
+                            <td>FEE</td>
+                            <td>Entrepreneuriat</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="http://linkedin.com/in/forum-ensam-casablanca-entreprises-9aa490181"
+                                           data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>SAWAID AL AMAL</td>
+                            <td>S.A.A</td>
+                            <td>Culturel, Social</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://www.facebook.com/SawaidAlAmal" data-tip="edit"><i
+                                            class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Club Sportif Arts et Métiers</td>
+                            <td>CSAM</td>
+                            <td>Sportif</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://www.facebook.com/csamcasa" data-tip="edit"><i
+                                            class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ZerOnes</td>
+                            <td>ZerOnes</td>
+                            <td>Informatique</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://www.facebook.com/clubzerones" data-tip="edit"><i
+                                            class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>E-mobility</td>
+                            <td>E-mobility</td>
+                            <td>Technique</td>
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://www.instagram.com/club.emobility/?hl=fr" data-tip="edit"><i
+                                            class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>FANTASIA</td>
+                            <td>FANTASIA</td>
+                            <td>Culturel</td>
+
+
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="https://www.facebook.com/fantasian.club" data-tip="edit"><i
+                                            class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Immersive technologies ENSAM Casablanca</td>
+                            <td>ITECH</td>
+                            <td>Technique</td>
+                            <td>
+                                <ul class="action-list">
+                                    <li><a href="#" data-tip="edit"><i class="bi bi-arrow-right-circle"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+                <!--                <div class="panel-footer">-->
+                <!--                    <div class="row">-->
+                <!--                        <div class="col col-sm-6 col-xs-6">showing <b>5</b> out of <b>25</b> entries</div>-->
+                <!--                        <div class="col-sm-6 col-xs-6">-->
+                <!--                            <ul class="pagination hidden-xs pull-right">-->
+                <!--                                <li><a href="#"><</a></li>-->
+                <!--                                <li class="active"><a href="#">1</a></li>-->
+                <!--                                <li><a href="#">2</a></li>-->
+                <!--                                <li><a href="#">3</a></li>-->
+                <!--                                <li><a href="#">4</a></li>-->
+                <!--                                <li><a href="#">5</a></li>-->
+                <!--                                <li><a href="#">></a></li>-->
+                <!--                            </ul>-->
+                <!--                            <ul class="pagination visible-xs pull-right">-->
+                <!--                                <li><a href="#"><</a></li>-->
+                <!--                                <li><a href="#">></a></li>-->
+                <!--                            </ul>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
-          </div>
-
         </div>
-      </div>
-    <br>
-     <div style="background-color: white" class="container aos-init aos-animate" data-aos="zoom-out">
-
-        <div class="row g-5">
-
-          <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-            <h3>ROTARACT ENSAM CASABLANCA</h3>
-Rotaract est un club service parrainé par le Rotary et destiné aux jeunes de 18 à 30 ans désireux de servir la collectivité.
-
-<br><br>Les clubs Rotaract sont de véritables «partenaires dans le service » et des membres essentiels de la famille rotarienne.
-
-<br><br>Rotaract ne vise pas seulement le social, c’est un club international qui prend en considération les valeurs d’amitié entre les membres de tous les clubs Rotaract ce que prouve son slogan « l’amitié par le service » et aussi chaque club Rotaract est amené à monter des actions et activités dans trois catégories: développement professionnel, action d’intérêt public et formation à l’encadrement, et grâce aux efforts fournis par les rotaractiens et le rotary club parrain dans le cadre du développement professionnel, les Rotaractiens approfondissent ainsi leur connaissance du milieu de l’entreprise et des possibilités qu’offre la collectivité.
-
-<br><br>Rotaract est un club qui se caractérise tout de même par son travail commun avec tous les Rotaract du Maroc et aussi avec les Rotaract au niveau international dans le cadre des actions internationales.
-          </div>
-
-          <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
-            <div class="img">
-              <img src="http://www.ensam-casa.ma/assets/images/club2.jpg" alt="" class="img-fluid">
-            </div>
-          </div>
-
-        </div>
-      </div>
-    <br>
-    <div style="background-color: white" class="container aos-init aos-animate" data-aos="zoom-out">
-
-        <div class="row g-5">
-
-          <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-            <h3>CLUB ART&CULTURE - ENSAM CASABLANCA</h3>
-
-              Le club ’’ Art & Culture’’ est un club qui a pour principal objectif la sensibilisation à l’importance de la culture pour une réussite personnelle et professionnelle et aussi procurer aux passionnés d’art un espace ouvert pour s’exprimer. La Culture et l’Art sont omniprésents et constituent une grande partie de notre existence comme étant un pilier dans l’épanouissement et le développement personnel.
-              La culture régit chaque aspect de notre vie et, comme la plupart des gens, nous n’en sommes pas vraiment conscients. Elle s’acquiert et s’oublie, aussi, malgré son importance, nous sommes généralement inconscients de son influence sur la façon dont nous percevons le monde et dont nous interagissons dans celui-ci. L'art est partout, parce que les gens ont besoin de l'utiliser pour des usages quotidiens il est utilisé aussi pour faire preuve de créativité et surtout comme moyen d’expression.
-          </div>
-
-          <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
-            <div class="img">
-              <img src="http://www.ensam-casa.ma/assets/images/club3.jpg" alt="" class="img-fluid">
-            </div>
-          </div>
-
-        </div>
-      </div>
-    <br>
-    <div style="background-color: white" class="container aos-init aos-animate" data-aos="zoom-out">
-
-        <div class="row g-5">
-
-          <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-            <h3>CSAM - CLUB SPORTIF ARTS & METIERS</h3>
-           Le Club Sportif Arts et Métiers, est un club créé par des élèves ingénieurs de l’Ecole Nationale Supérieure d’Arts et Métiers de Casablanca qui assure la pratique du sport et organise plusieurs activités physiques et sportives facultatives pour tous les étudiants du cycle normal.
-
-<br><br>Ce club met tout en œuvre pour satisfaire l’ensemble des étudiants ; aussi bien ceux qui désirent pratiquer leur passion, que ceux qui désirent se maintenir en forme uniquement.
-
-<br><br>Notre mission est simple : favoriser la pratique du sport en tant que loisir irremplaçable, découvrir de nouveaux sports jusque là méconnus, voire inédits, accroître la compétition entre les étudiants d’un point de vue sportif, et relever le niveau du sport universitaire et lui donner un nouvel envol.
-
-          </div>
-
-          <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
-            <div class="img">
-              <img src="http://www.ensam-casa.ma/assets/images/club4.jpg" alt="" class="img-fluid">
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
+    </div>
+</div>
 
 
 {% endblock %}

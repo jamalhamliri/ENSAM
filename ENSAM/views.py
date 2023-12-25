@@ -13,6 +13,8 @@ def ent(request):
 
 def mooc_universite(request):
     return HttpResponseRedirect('http://www.mooc.univh2c.ma/')
+def biblio(request):
+    return HttpResponseRedirect('http://bums.univcasa.ma/')
 
 
 def home(request):

@@ -4,154 +4,174 @@
     .mon-menu-personnalise {
         list-style: none;
         padding: 0;
-        z-index: 1000;
-
+        z-index: 500;
     }
 
-    .mon-menu-personnalise li {
+    .mon-menu-personnalise > li {
         display: inline-block;
-        margin-right: 20px;
-        position: relative; /* Pour les éléments enfants positionnés absolument */
-
+        margin-right: 0px;
+        margin-left: 0px;
+        position: relative;
     }
 
-    .mon-menu-personnalise li a {
+    .mon-menu-personnalise > li > a {
         text-decoration: none;
         color: white;
-        padding: 10px 15px; /* Ajustez l'espacement interne du lien */
-        display: block; /* Pour que les liens occupent toute la largeur de l'élément li */
+        padding: 10px 15px;
+        display: block;
+        transition: color 0.3s ease;
     }
 
-    /* Sous-menu */
+    .mon-menu-personnalise.header-scrolled > li > a {
+        color: white;
+    }
+
     .mon-menu-personnalise ul {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: #1F5793; /* Couleur de fond du sous-menu */
-        padding: 10px 0; /* Ajustez l'espacement interne du sous-menu */
-        border: 1px solid #ccc; /* Bordure du sous-menu */
+        background-color: #1F5793;
+        padding: 10px 0;
+        border: 1px solid #ccc;
     }
 
     .mon-menu-personnalise li:hover > ul {
         display: block;
     }
 
-    /* Styles pour les éléments du sous-menu */
     .mon-menu-personnalise ul li {
         display: block;
-        margin-right: 0; /* Réinitialisez la marge */
-        white-space: nowrap; /* Empêche le retour à la ligne dans le sous-menu */
+        margin-right: 0;
+        white-space: nowrap;
     }
 
     .mon-menu-personnalise ul li a {
-        padding: 8px 20px; /* Ajustez l'espacement interne du lien du sous-menu */
-    }
-
-
-    /*--------------------------------------------------------------
-      # Top Bar
-      --------------------------------------------------------------*/
-    #topbar {
-        background-color: #1F5793;
-        height: 40px;
-        font-size: 14px;
-        transition: all 0.5s;
-        color: #fff;
-        padding: 0;
-    }
-
-    #topbar .contact-info i {
-        font-style: normal;
-        color: #fff;
-    }
-
-    #topbar .contact-info i a,
-    #topbar .contact-info i span {
-        padding-left: 5px;
-        color: #fff;
-    }
-
-    #topbar .contact-info i a {
-        line-height: 0;
-        transition: 0.3s;
-        transition: 0.3s;
-    }
-
-    #topbar .contact-info i a:hover {
-        color: #fff;
-        text-decoration: underline;
-    }
-
-    #topbar .social-links a {
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 0;
-        transition: 0.3s;
-        margin-left: 20px;
-    }
-
-    #topbar .social-links a:hover {
+        padding: 8px 20px;
         color: white;
     }
 
+    .mon-menu-personnalise ul li a:hover {
+        color: white;
+    }
+
+
 </style>
-<div style=" width: 100%; background-color: #fff; z-index: 1000;">
-    <section id="topbar" class="d-flex align-items-center">
-        <div class="container d-flex justify-content-center justify-content-md-between">
-            <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-browser-chrome d-flex align-items-center"><a
-                        href="https://ent.univh2c.ma/uPortal/f/welcome/normal/render.uP">ENT</a></i>
-                <i class="bi bi-collection d-flex align-items-center ms-4"><a href="#">Bibliothèque</a></i>
-            </div>
-            <div class="social-links d-none d-md-flex align-items-center">
-                <a href="https://twitter.com/ensamcasa2019" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.facebook.com/ENSAM.univ/" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="https://www.youtube.com/channel/UCeQB_nDJYbY6T5n7SsxkdAw" class="youtube"><i
-                        class="bi bi-youtube"></i></a>
-                <a href="https://www.linkedin.com/school/ensam-casablanca/about/" class="linkedin"><i
-                        class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-    </section>
-    <header id="header" class="d-flex align-items-center"
-            style=" background-color:#1F5793; ">
-        <div class="container d-flex align-items-center justify-content-between">
-            <!--            <h1 class="logo"><a href="/"><img src="{% static 'assets/img/logoENsam.png' %}" alt="ENSAM Logo"/></a></h1>-->
-            <nav id="navbar" class="navbar">
-                <ul style="color: white" class="mon-menu-personnalise">
-                    {% show_menu 0 100 100 100 %}
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav>
-        </div>
 
-    </header>
 
+<!--<header id="header" class="d-flex align-items-center" style="background-color: #1F5793; width: 105%;">-->
+<!--     <div class="container d-flex align-items-center" >-->
+
+
+<div style="width: 100%; z-index: 1000;background-color: rgba(255, 255, 255, 0.8);">
     <div>
         <div class="row">
-            <div style="height: 150px;width: 300px;" class="col-lg-2"><a href="/">
-                <center><img style="height: 150px;width: 200px;" src="{% static 'assets/img/logoENsam.png' %}"
-                             alt="ENSAM Logo"/></center></a>
-            </div>
             <div class="col-lg-1">
             </div>
-            <div style="height: 150px;width: 300px;" class="col-lg-2"><a href="/">
-                <center><img style="height: 150px;width: 500px;" src="{% static 'assets/img/ecole.jpg' %}"
-                             alt="ENSAM Logo"/></center></a>
+
+            <div style="height: 150px;width: 300px;margin-left:-30px;" class="col-lg-2"><a href="/">
+                <img style="height: 150px;width: 200px;" src="{% static 'assets/img/logopri.png' %}"
+                     alt="ENSAM Logo"/></a>
             </div>
 
-            <div class="col-lg-3">
+
+            <div style="height: 150px;width: 200px; margin:0;" class="col-lg-2"><a href="/">
+                <img style="height: 150px;width: 200px;" src="{% static 'assets/img/logoENsam.png' %}"
+                     alt="ENSAM Logo"/></a>
+            </div>
+
+            <div class="col-lg-2"><a href="/">
+                <img style="height: 150px;width: 450px;" src="{% static 'assets/img/ecolepri.png' %}"
+                     alt="ENSAM Logo"/></a>
             </div>
 
 
-            <div style="height: 150px;width: 300px;" class="col-lg-2 ">
-                <center>
-                    <img src="{% static 'assets/img/min.png' %}"
-                         alt="Min Logo"/>
-                </center>
+            <div class="col-lg-2">
+            </div>
+
+
+            <div style="height: 150px;width: 200px;" class="col-lg-2 ">
+                <img src="{% static 'assets/img/min.png' %}"
+                     alt="Min Logo"/>
+                <div class="col-lg-1">
+                </div>
+
             </div>
         </div>
     </div>
+    <header id="header" class=" d-flex align-items-center" style="background-color: #1F5793; width: 100%;">
+    <div class="container d-flex align-items-center">
+        <!-- Votre contenu ici -->
+        <nav id="navbar" class="navbar">
+            <ul style="color: white;" class="mon-menu-personnalise" id="menu">
+                <!-- Contenu du menu -->
+                <!-- Utilisation de votre balise Django pour afficher le menu -->
+                {% show_menu 0 100 100 100 %}
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    </div>
+</header>
+
+
+
 </div>
+<!-- <header id="header" class="fixed-top d-flex align-items-center">-->
+<!--    <div class="container d-flex align-items-center">-->
+
+<!--      <h1 class="logo me-auto"><a href="index.html">Sailor</a></h1>-->
+<!--      &lt;!&ndash; Uncomment below if you prefer to use an image logo &ndash;&gt;-->
+<!--      &lt;!&ndash; <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>&ndash;&gt;-->
+
+<!--      <nav id="navbar" class="navbar">-->
+<!--        <ul>-->
+<!--          <li><a href="index.html" class="active">Home</a></li>-->
+
+<!--          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>-->
+<!--            <ul>-->
+<!--              <li><a href="about.html">About</a></li>-->
+<!--              <li><a href="team.html">Team</a></li>-->
+<!--              <li><a href="testimonials.html">Testimonials</a></li>-->
+
+<!--              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>-->
+<!--                <ul>-->
+<!--                  <li><a href="#">Deep Drop Down 1</a></li>-->
+<!--                  <li><a href="#">Deep Drop Down 2</a></li>-->
+<!--                  <li><a href="#">Deep Drop Down 3</a></li>-->
+<!--                  <li><a href="#">Deep Drop Down 4</a></li>-->
+<!--                  <li><a href="#">Deep Drop Down 5</a></li>-->
+<!--                </ul>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </li>-->
+<!--          <li><a href="services.html">Services</a></li>-->
+<!--          <li><a href="portfolio.html">Portfolio</a></li>-->
+<!--          <li><a href="pricing.html">Pricing</a></li>-->
+<!--          <li><a href="blog.html">Blog</a></li>-->
+
+<!--          <li><a href="contact.html">Contact</a></li>-->
+<!--          <li><a href="index.html" class="getstarted">Get Started</a></li>-->
+<!--        </ul>-->
+<!--        <i class="bi bi-list mobile-nav-toggle"></i>-->
+<!--      </nav>&lt;!&ndash; .navbar &ndash;&gt;-->
+
+<!--    </div>-->
+<!--  </header>&lt;!&ndash; End Header &ndash;&gt;-->
+
+
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--<script>-->
+<!--$(document).ready(function() {-->
+<!--    $('#menu').hover(-->
+<!--        function() {-->
+<!--            $('#header').addClass('header-scrolled');-->
+<!--        },-->
+<!--        function() {-->
+<!--            $('#header').removeClass('header-scrolled');-->
+<!--        }-->
+<!--    );-->
+<!--});-->
+<!--</script>-->
+
 
 
