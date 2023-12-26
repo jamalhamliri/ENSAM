@@ -72,13 +72,11 @@
                 <div class="space"></div>
             </div>
             <ul class="list-group">
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Années Préparatoires
-                    Intégrées (API): Maths, Physique
-                    & Technologie
+                <li class="list-group-item">
+                    <a href="{% url 'api' %}"><span class="glyphicon glyphicon-ok"></span> Années Préparatoires
+                        Intégrées (API): Maths, Physique & Technologie</a>
                 </li>
-
             </ul>
-
         </div>
         <!-- Pack 2-->
         <div class="col-md-3" id="home-box">
@@ -87,10 +85,14 @@
                 <div class="space"></div>
             </div>
             <ul class="list-group">
-                <li class="list-group-item"><a href="#">><span class="glyphicon glyphicon-ok"></span>Génie Electromécanique</a></li>
-                <li class="list-group-item"><a href="#">><span class="glyphicon glyphicon-ok"></span>Génie Mécanique</a></li>
-                <li class="list-group-item"><a href="#">><span class="glyphicon glyphicon-ok"></span>Management des Systèmes Électriques Intelligents</a></li>
-                <li class="list-group-item"><a href="#">><span class="glyphicon glyphicon-ok"></span>Intelligence Artificielle et Génie Informatique</a></li>
+                <li class="list-group-item"><a href="{% url 'ge' %}"><span class="glyphicon glyphicon-ok"></span>Génie
+                    Electromécanique</a></li>
+                <li class="list-group-item"><a href="{% url 'gm' %}"><span class="glyphicon glyphicon-ok"></span>Génie
+                    Mécanique</a></li>
+                <li class="list-group-item"><a href="{% url 'mse' %}"><span class="glyphicon glyphicon-ok"></span>Management
+                    des Systèmes Électriques Intelligents</a></li>
+                <li class="list-group-item"><a href="{% url 'iagi' %}"><span class="glyphicon glyphicon-ok"></span>Intelligence
+                    Artificielle et Génie Informatique</a></li>
 
             </ul>
 
@@ -106,12 +108,14 @@
             </div>
             <ul class="list-group">
 
-                <li class="list-group-item"><a href="#">><span class="glyphicon glyphicon-ok"></span> Contrôle industriel & management de l’énergie</a></li>
-                <li class="list-group-item"><a href="#">><span class="glyphicon glyphicon-ok"></span>Management industriel et transformation digitale</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span>  Génie civil, bâtiment et construction métallique</a></li>
+                <li class="list-group-item"><a href="{% url 'cime' %}"><span class="glyphicon glyphicon-ok"></span>
+                    Contrôle industriel & management de l’énergie</a></li>
+                <li class="list-group-item"><a href="{% url 'mitd' %}"><span class="glyphicon glyphicon-ok"></span>Management
+                    industriel et transformation digitale</a></li>
+                <li class="list-group-item"><a href="{% url 'gcbcm' %}"><span class="glyphicon glyphicon-ok"></span>
+                    Génie civil, bâtiment et construction métallique</a></li>
 
             </ul>
-
 
 
         </div>
@@ -124,16 +128,26 @@
                 <div class="space"></div>
             </div>
             <ul class="list-group">
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Automatismes industriels & systèmes électriques</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span>  Développement Logiciel et Sécurité des systèmes</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span>  Ingénierie en diagnostic automobile et maintenance industrielle</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Conception de systèmes automobiles et aéronautiques</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Génie Civil</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Qualité sécurité environnement</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Management des systemes industriels</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Développement web et mobile</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Digitalisation industrielle</a></li>
-                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-ok"></span> Technologies de traitement des surfaces</a></li>
+                <li class="list-group-item"><a href="{% url 'aise' %}"><span class="glyphicon glyphicon-ok"></span> Automatismes
+                    industriels & systèmes électriques</a></li>
+                <li class="list-group-item"><a href="{% url 'dlss' %}">><span class="glyphicon glyphicon-ok"></span> Développement
+                    Logiciel et Sécurité des systèmes</a></li>
+                <li class="list-group-item"><a href="{% url 'idami' %}">><span class="glyphicon glyphicon-ok"></span> Ingénierie en
+                    diagnostic automobile et maintenance industrielle</a></li>
+                <li class="list-group-item"><a href="{% url 'csaa' %}">><span class="glyphicon glyphicon-ok"></span> Conception de
+                    systèmes automobiles et aéronautiques</a></li>
+                <li class="list-group-item"><a href="{% url 'gc' %}">><span class="glyphicon glyphicon-ok"></span> Génie Civil</a>
+                </li>
+                <li class="list-group-item"><a href="{% url 'qse' %}">><span class="glyphicon glyphicon-ok"></span> Qualité sécurité
+                    environnement</a></li>
+                <li class="list-group-item"><a href="{% url 'msi' %}">><span class="glyphicon glyphicon-ok"></span> Management des
+                    systemes industriels</a></li>
+                <li class="list-group-item"><a href="{% url 'dwm' %}">><span class="glyphicon glyphicon-ok"></span> Développement web
+                    et mobile</a></li>
+                <li class="list-group-item"><a href="{% url 'di' %}">><span class="glyphicon glyphicon-ok"></span> Digitalisation
+                    industrielle</a></li>
+                <li class="list-group-item"><a href="{% url 'tts' %}">><span class="glyphicon glyphicon-ok"></span> Technologies de
+                    traitement des surfaces</a></li>
 
             </ul>
 
