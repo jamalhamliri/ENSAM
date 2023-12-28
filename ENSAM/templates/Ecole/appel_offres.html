@@ -2,61 +2,7 @@
 {% load cms_tags menu_tags sekizai_tags %}
 {% load static %}
 {% block content %}
-  <style>
-    .header {
-      position: relative;
-      border-bottom-right-radius: 50%;
-      background: #07689f;
-      overflow: hidden;
-      word-wrap: break-word;
-      min-height: 400px;
-      padding: 0 50px;
-      max-height: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .header .title {
-      text-align: center;
-      margin: 0 auto;
-      width: 60%;
-      height: 100%;
-    }
-    
-    .header .heading {
-      font-weight: 900;
-      color: #fafafa;
-      font-size: 45px;
-    }
-    
-    @media screen and (max-width: 890px) {
-      .header .heading {
-        font-size: 30px;
-      }
-    }
-    
-    .header .description {
-      color: #fff;
-      font-size: 16px;
-    }
-    
-    @media screen and (max-width: 768px) {
-      .header {
-        padding: 0 0;
-      }
-    
-      .header .title {
-        padding: 0 0;
-        width: 100%;
-      }
-    
-      .header .description {
-        display: none;
-      }
-    }
-  </style>
+
   <section class="header">
     <div class="title">
       <h1 class="heading mb-3">APPELS D'OFFRES</h1>
@@ -64,9 +10,9 @@
   </section>
   <section id="blog" class="blog">
     <div class="container" data-aos="fade-up">
-      <div style="background-color: white" class="row">
+      <div  class="row">
         <div class="col-lg-8 entries">
-          <article class="entry">
+          <article style="background-color: white;" class="entry">
             <div class="entry-img">
               <img src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}" alt="" class="img-fluid" />
             </div>
@@ -82,7 +28,7 @@
           </article>
           <!-- End blog entry -->
 
-          <article class="entry">
+          <article style="background-color: white;" class="entry">
             <div class="entry-img">
               <img src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}" alt="" class="img-fluid" />
             </div>
@@ -115,7 +61,7 @@
         </div>
         <!-- End blog entries list -->
         <div class="col-lg-4">
-          <div class="sidebar">
+          <div style="background-color: white;" class="sidebar">
             <h4>LIENS DIRECTS</h4>
             <div class="sidebar-item categories">
               <ul>

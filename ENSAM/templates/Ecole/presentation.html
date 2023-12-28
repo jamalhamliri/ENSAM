@@ -2,316 +2,634 @@
 {% load cms_tags menu_tags sekizai_tags %}
 {% load static %}
 {% block content %}
-  <style>
+<style>
 
     .header {
-      position: relative;
-      border-bottom-right-radius: 50%;
-      background: #07689f;
-      overflow: hidden;
-      word-wrap: break-word;
-      min-height: 400px;
-      padding: 0 50px;
-      max-height: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+        position: relative;
+        border-bottom-right-radius: 50%;
+        background: #07689f;
+        overflow: hidden;
+        word-wrap: break-word;
+        min-height: 400px;
+        padding: 0 50px;
+        max-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    
+
     .header .title {
-      text-align: center;
-      margin: 0 auto;
-      width: 60%;
-      height: 100%;
+        text-align: center;
+        margin: 0 auto;
+        width: 60%;
+        height: 100%;
     }
-    
+
     .header .heading {
-      font-weight: 900;
-      color: #fafafa;
-      font-size: 45px;
+        font-weight: 900;
+        color: #fafafa;
+        font-size: 45px;
     }
-    
+
     @media screen and (max-width: 890px) {
-      .header .heading {
-        font-size: 30px;
-      }
+        .header .heading {
+            font-size: 30px;
+        }
     }
-    
+
     .header .description {
-      color: #fff;
-      font-size: 16px;
+        color: #fff;
+        font-size: 16px;
     }
-    
+
     @media screen and (max-width: 768px) {
-      .header {
-        padding: 0 0;
-      }
-    
-      .header .title {
-        padding: 0 0;
-        width: 100%;
-      }
-    
-      .header .description {
-        display: none;
-      }
+        .header {
+            padding: 0 0;
+        }
+
+        .header .title {
+            padding: 0 0;
+            width: 100%;
+        }
+
+        .header .description {
+            display: none;
+        }
     }
-  </style>
-  <section class="header">
+
+    .list-group {
+        width: 400px !important;
+
+    }
+
+    .list-group-item {
+        margin-top: 10px;
+        border-radius: none;
+        background: #5E35B1;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .list-group-item:hover {
+        transform: scaleX(1.1);
+    }
+
+
+    .check {
+        opacity: 0;
+        transition: all 0.6s ease-in-out;
+    }
+
+    .list-group-item:hover .check {
+        opacity: 1;
+
+    }
+
+    .about span {
+        font-size: 12px;
+        margin-right: 10px;
+
+    }
+
+    input[type=checkbox] {
+        position: relative;
+        cursor: pointer;
+    }
+
+    input[type=checkbox]:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 0px;
+        left: 0;
+        border: 1px solid #10a3f9;
+        border-radius: 3px;
+        background-color: white;
+
+    }
+
+    input[type=checkbox]:checked:after {
+        content: "";
+        display: block;
+        width: 7px;
+        height: 12px;
+        border: solid #007bff;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top: 2px;
+        left: 6px;
+    }
+
+    input[type="checkbox"]:checked + .check {
+        opacity: 1;
+    }
+
+    @media (max-width: 991px) {
+        .faq {
+            padding: 0;
+        }
+    }
+
+    .faq .content h3 {
+        font-weight: 400;
+        font-size: 34px;
+        color: var(--color-secondary);
+    }
+
+    .faq .content h4 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+
+    .faq .content p {
+        font-size: 15px;
+        color: var(--color-gray);
+    }
+
+    .faq .img {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        min-height: 400px;
+    }
+
+    .faq .accordion-item {
+        border: 0;
+        margin-top: 15px;
+        box-shadow: 0px 5px 25px 0px rgba(var(--color-black-rgb), 0.06);
+    }
+
+    .faq .accordion-collapse {
+        border: 0;
+    }
+
+    .faq .accordion-button {
+        padding: 15px 40px 20px 60px;
+        font-weight: 600;
+        border: 0;
+        font-size: 18px;
+        color: var(--color-default);
+        text-align: left;
+        background: var(--color-white);
+        box-shadow: none;
+        border-radius: 5px;
+    }
+
+    .faq .accordion-button:not(.collapsed) {
+        color: var(--color-primary);
+        border-bottom: 0;
+        box-shadow: none;
+    }
+
+    .faq .question-icon {
+        position: absolute;
+        top: 14px;
+        left: 25px;
+        font-size: 20px;
+        color: var(--color-primary);
+    }
+
+    .faq .accordion-button:after {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: var(--color-primary);
+    }
+
+    .faq .accordion-body {
+        padding: 0 30px 25px 60px;
+        border: 0;
+        border-radius: 5px;
+        background: var(--color-white);
+        box-shadow: none;
+    }
+</style>
+<section class="header">
     <div class="title">
-      <h1 class="heading mb-3">PRESENTATION</h1>
-      <p class="description mb-5">L'École Nationale Supérieure des Arts et Métiers</p>
+        <h1 class="heading mb-3">PRESENTATION</h1>
+        <p class="description mb-5">L'École Nationale Supérieure des Arts et Métiers</p>
     </div>
-  </section>
+</section>
 
-  <section  id="blog" class="blog">
+<section id="blog" class="blog">
     <div class="container1" data-aos="fade-up">
-      <div  class="row">
-        <div   class="col-lg-8 entries">
-          <article style="background-color: white;"xam  class="entry entry-single">
-            <div class="entry-img">
-              <img src="{% static 'assets/img/ensamCasa.jpg' %}" alt="" class="img-fluid" />
-            </div>
-
-            <h2 class="entry-title"><a href="blog-single.html">ENSAM CASABLANCA</a></h2>
-
-            <div class="entry-content">
-              <p>ENSAM Créée en 2010, dans la plus grande agglomération industrielle du Royaume pour répondre aux besoins en ingénieurs, l’École Nationale Supérieure des Arts et Métiers de Casablanca relevant de l’Université Hassan II de Casablanca, est une école d’ingénieurs étatique qui assure une formation d’ingénieurs pluri-compétents, humanistes, innovants et dotés d’un esprit entrepreneurial, opérants dans différents secteurs industriels privés et publics à l’échelle national et international.</p>
-              <h3>MISSION</h3>
-
-              <div class="p2">
-                <p>Afin d’être à la hauteur des attentes de ses élèves ingénieurs, et convaincue que leur formation doit combiner : Qualité technique, managériale et relationnelle ; l’ENSAM&nbsp;de Casablanca vise le développement d’une offre très large de formations. Partant de ce principe, et en incitant et motivant ses étudiants à organiser différents événements (Sociales, professionnels, culturels et sportifs), elle permet à ses futurs lauréats d’acquérir:</p>
-                <div class="row align-items-center how-it-works">
-                  <div class="col-2 text-center bottom">
-                    <div class="circle">1</div>
-                  </div>
-                  <div class="col-10">
-                    <p class="description">Les compétences techniques et professionnelles de l’ingénieur.</p>
-                  </div>
-                </div>
-                <!-- path between 1-2 -->
-                <div class="row timeline">
-                  <div class="col-2">
-                    <div class="corner top-right"></div>
-                  </div>
-                  <div class="col-8">
-                    <hr />
-                  </div>
-                  <div class="col-2">
-                    <div class="corner left-bottom"></div>
-                  </div>
-                </div>
-                <!-- second section -->
-                <div class="row align-items-center justify-content-end how-it-works">
-                  <div class="col-10 text-right">
-                    <p class="description">L’épanouissement de la personnalité</p>
-                  </div>
-                  <div class="col-2 text-center full">
-                    <div class="circle">2</div>
-                  </div>
-                </div>
-                <!-- path between 2-3 -->
-                <div class="row timeline">
-                  <div class="col-2">
-                    <div class="corner right-bottom"></div>
-                  </div>
-                  <div class="col-8">
-                    <hr />
-                  </div>
-                  <div class="col-2">
-                    <div class="corner top-left"></div>
-                  </div>
-                </div>
-                <!-- third section -->
-                <div class="row align-items-center how-it-works">
-                  <div class="col-2 text-center full2">
-                    <div class="circle">3</div>
-                  </div>
-                  <div class="col-10">
-                    <p class="description">L’apprentissage de la responsabilité.</p>
-                  </div>
-                </div>
-                <!-- path between 1-2 -->
-                <div class="row timeline">
-                  <div class="col-2">
-                    <div class="corner top-right"></div>
-                  </div>
-                  <div class="col-8">
-                    <hr />
-                  </div>
-                  <div class="col-2">
-                    <div class="corner left-bottom"></div>
-                  </div>
-                </div>
-                <!-- second section -->
-                <div class="row align-items-center justify-content-end how-it-works">
-                  <div class="col-10 text-right">
-                    <p class="description">L’adaptation à un milieu professionnel en constante évolution.</p>
-                  </div>
-                  <div class="col-2 text-center corner top">
-                    <div class="circle">4</div>
-                  </div>
-                </div>
-              </div>
-              <h3>FORMATION</h3>
-              <div class="p3">
-                <p>La formation à l’ENSAM– Casablanca dure cinq ans: deux années préparatoires et trois années de formations spécialisées en l’une des filières :</p>
-                <ul class="linked">
-                  <li>
-                    <a href="http://www.ensam-casa.ma/Fili%C3%A8re_G%C3%A9nie_Electrom%C3%A9canique">Génie Electromécanique <span class="fas fa-arrow-circle-right fa-lg"></span></a>
-                  </li>
-                  <li>
-                    <a href="http://www.ensam-casa.ma/Fili%C3%A8re_G%C3%A9nie_M%C3%A9canique">Génie Mécanique <span class="fas fa-arrow-circle-right fa-lg"></span></a>
-                  </li>
-                  <li>
-                    <a href="http://www.ensam-casa.ma/Fili%C3%A8re_G%C3%A9nie_Industriel">Génie Industriel <span class="fas fa-arrow-circle-right fa-lg"></span></a>
-                  </li>
-                  <li>
-                    <a href="http://www.ensam-casa.ma/Fili%C3%A8re_Management_des_Syst%C3%A8mes_Electriques_Intelligents">Management des Systèmes Electriques Intelligents <span class="fas fa-arrow-circle-right fa-lg"></span></a>
-                  </li>
-                  <li>
-                    <a href="http://www.ensam-casa.ma/Fili%C3%A8re_Intelligence_Artificielle_&amp;_G%C3%A9nie_Informatique">Intelligence Artificielle et Génie Informatique <span class="fas fa-arrow-circle-right fa-lg"></span></a>
-                  </li>
-                </ul>
-              </div>
-              <section id="features" class="features">
-                <div class="container">
-                  <div class="section-title">
-                    <h3>AVANTAGES</h3>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3">
-                      <ul class="nav nav-tabs flex-column" role="tablist">
-                        <li class="nav-item" role="presentation">
-                          <a class="nav-link active" data-bs-toggle="tab" href="#tab-1" aria-selected="false" role="tab" tabindex="-1">Un accès sélectif pour un apprentissage productif</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <a class="nav-link " data-bs-toggle="tab" href="#tab-2" aria-selected="false" role="tab" tabindex="-1">Une pédagogie attrayante pour un métier d’avenir</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <a class="nav-link" data-bs-toggle="tab" href="#tab-3" aria-selected="false" role="tab" tabindex="-1">Une formation axée sur l’entreprise pour une insertion réussie</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <a class="nav-link " data-bs-toggle="tab" href="#tab-4" aria-selected="true" role="tab">Un partenariat large pour plus d’ouverture</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <a class="nav-link" data-bs-toggle="tab" href="#tab-5" aria-selected="false" tabindex="-1" role="tab">Un cadre de travail privilégié pour une vie étudiante active et citoyenne</a>
-                        </li>
-                      </ul>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-7 entries">
+                <article style="background-color: white;" class="entry entry-single">
+                    <div class="entry-img">
+                        <img src="{% static 'assets/img/ensamCasa.jpg' %}" alt="" class="img-fluid"/>
                     </div>
-                    <div class="col-lg-9 mt-4 mt-lg-0">
-                      <div class="tab-content">
-                        <div class="tab-pane" id="tab-1" role="tabpanel">
-                          <div class="row">
-                            <div class="col-lg-8 details order-2 order-lg-1">
-                              <p>En choisissant d’intégrer l’ENSAM-Casablanca, vous optez pour une formation d’ingénieurs de référence. L’accès en première année de l’ENSAM est réservé aux élèves ayant obtenu :</p>
-                              <ul>
-                                <li>Un baccalauréat scientifique (Sciences Mathématiques A ou B, Sciences Expérimentales)</li>
-                                <li>un baccalauréat technique.</li>
-                              </ul>L’accès en troisième et quatrième année de l’ENSAM est réservé aux élèves ayant réussi :<ul>
-                                <li>le concours national communs et titulaires des diplômes de DUT, DEUG, DEUST, BTS, DTS, license ou tout diplôme reconnu</li>
-                                <li>équivalent.</li>
-                              </ul>
-                            </div>
 
-                          </div>
-                        </div>
-                        <div class="tab-pane" id="tab-2" role="tabpanel">
-                          <div class="row">
-                            <div class="col-lg-8 details order-2 order-lg-1">
-                              <p>80% de la formation à l’ENSAM-Casablanca est basée sur les sciences et techniques. Elle donne accès à de nombreux secteurs industriels porteurs (automobile, aéronautique, mécatronique, énergie…). 20% de la formation est centrée sur la pratique et à la maîtrise de l’ingénierie de projet, aux techniques de communication, au travail en équipe et à la gestion de l’entreprise. Ces disciplines apportent aux étudiants-ingénieurs les compétences managériales indispensables à leur futur métier et leur permet d’être immédiatement opérationnels dans le monde des entreprises.</p>
-                            </div>
+                    <h2 class="entry-title"><a href="blog-single.html">ENSAM CASABLANCA</a></h2>
 
-                          </div>
-                        </div>
-                        <div class="tab-pane" id="tab-3" role="tabpanel">
-                          <div class="row">
-                            <div class="col-lg-8 details order-2 order-lg-1">
-                              L’intégration dans l’entreprise, par le biais des stages de découverte, d’ingénieur et le Projet de fin d’étude, fait partie intégrante de la formation de l’ingénieur de l’ENSAM. L’enseignement couvre des domaines étendus selon trois options de formations en étroite relation avec les secteurs industriels porteurs et les enjeux sociétaux prioritaires :<ul>
-                                <li>Conception des Produits Nouveaux (CPN)</li>
-                                <li>Construction d’Ouvrages Métalliques (COM)</li>
-                                <li>Efficacité et Performance Energétique Industrielle (EFPEI)</li>
-                              </ul>La formation délivrée permet aussi aux jeunes ingénieurs de s’orienter vers des fonctions types bureaux d’études, Industrie automobile, aéronautique, navale et ferroviaire …
-                            </div>
+                    <div class="entry-content">
+                        <p>ENSAM Créée en 2010, dans la plus grande agglomération industrielle du Royaume pour répondre
+                            aux besoins en ingénieurs, l’École Nationale Supérieure des Arts et Métiers de Casablanca
+                            relevant de l’Université Hassan II de Casablanca, est une école d’ingénieurs étatique qui
+                            assure une formation d’ingénieurs pluri-compétents, humanistes, innovants et dotés d’un
+                            esprit entrepreneurial, opérants dans différents secteurs industriels privés et publics à
+                            l’échelle national et international.</p>
+                        <h3>MISSION</h3>
 
-                          </div>
-                        </div>
-                        <div class="tab-pane active show" id="tab-4" role="tabpanel">
-                          <div class="row">
-                            <div class="col-lg-8 details order-2 order-lg-1">
-                              <p>Les partenariats pédagogiques constituent un axe incontournable du développement de l’école. Au niveau national, l’école fait partie du réseau national des grandes écoles d’ingénieurs. A l’international, l’ENSAM a développé des liens forts avec de grandes écoles d’ingénieur en France comme l’UTC de Belfort Montbéliard, l’ENSAM Paris-Tech et le réseau des INSA de France. Certes, dans une ère de mondialisation des efforts sont toujours déployés pour une grande ouverture sur l’international. Les relations industrielles de l’ENSAM ne cessent de s’accroitre dans un tissu industriel casablancais assez développé et assez varié.</p>
+                        <div class="p2">
+                            <p>Afin d’être à la hauteur des attentes de ses élèves ingénieurs, et convaincue que leur
+                                formation doit combiner : Qualité technique, managériale et relationnelle ; l’ENSAM&nbsp;de
+                                Casablanca vise le développement d’une offre très large de formations. Partant de ce
+                                principe, et en incitant et motivant ses étudiants à organiser différents événements
+                                (Sociales, professionnels, culturels et sportifs), elle permet à ses futurs lauréats
+                                d’acquérir:</p>
+                            <div class="row align-items-center how-it-works">
+                                <div class="col-2 text-center bottom">
+                                    <div class="circle">1</div>
+                                </div>
+                                <div class="col-10">
+                                    <p class="description">Les compétences techniques et professionnelles de
+                                        l’ingénieur.</p>
+                                </div>
                             </div>
-
-                          </div>
-                        </div>
-                        <div class="tab-pane" id="tab-5" role="tabpanel">
-                          <div class="row">
-                            <div class="col-lg-8 details order-2 order-lg-1">
-                              <p>Pour rendre l’école plus dynamique et vivante, l’association des élèves, à travers ses clubs, propose aux étudiants une multitude d’activités allant du domaine artistique au domaine technique. Elle assure l’animation et la gestion de la vie étudiante et fédère plus de 15 clubs et associations qui ont pour objectif le développement personnel des élèves ingénieurs de l’ENSAM-Casablanca.</p>
+                            <!-- path between 1-2 -->
+                            <div class="row timeline">
+                                <div class="col-2">
+                                    <div class="corner top-right"></div>
+                                </div>
+                                <div class="col-8">
+                                    <hr/>
+                                </div>
+                                <div class="col-2">
+                                    <div class="corner left-bottom"></div>
+                                </div>
                             </div>
-
-                          </div>
+                            <!-- second section -->
+                            <div class="row align-items-center justify-content-end how-it-works">
+                                <div class="col-10 text-right">
+                                    <p class="description">L’épanouissement de la personnalité</p>
+                                </div>
+                                <div class="col-2 text-center full">
+                                    <div class="circle">2</div>
+                                </div>
+                            </div>
+                            <!-- path between 2-3 -->
+                            <div class="row timeline">
+                                <div class="col-2">
+                                    <div class="corner right-bottom"></div>
+                                </div>
+                                <div class="col-8">
+                                    <hr/>
+                                </div>
+                                <div class="col-2">
+                                    <div class="corner top-left"></div>
+                                </div>
+                            </div>
+                            <!-- third section -->
+                            <div class="row align-items-center how-it-works">
+                                <div class="col-2 text-center full2">
+                                    <div class="circle">3</div>
+                                </div>
+                                <div class="col-10">
+                                    <p class="description">L’apprentissage de la responsabilité.</p>
+                                </div>
+                            </div>
+                            <!-- path between 1-2 -->
+                            <div class="row timeline">
+                                <div class="col-2">
+                                    <div class="corner top-right"></div>
+                                </div>
+                                <div class="col-8">
+                                    <hr/>
+                                </div>
+                                <div class="col-2">
+                                    <div class="corner left-bottom"></div>
+                                </div>
+                            </div>
+                            <!-- second section -->
+                            <div class="row align-items-center justify-content-end how-it-works">
+                                <div class="col-10 text-right">
+                                    <p class="description">L’adaptation à un milieu professionnel en constante
+                                        évolution.</p>
+                                </div>
+                                <div class="col-2 text-center corner top">
+                                    <div class="circle">4</div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
+                        <h3>FORMATION</h3>
+
+
+                        <div class="container d-flex justify-content-center">
+
+                            <ul class="list-group mt-5 text-white">
+                                <li class="list-group-item d-flex justify-content-between align-content-center">
+
+                                    <div class="d-flex flex-row">
+                                        <i class="bi bi-arrow-right-circle"></i>
+                                        <div class="ml-2">
+                                            <a
+                                                    href="http://www.ensam-casa.ma/Fili%C3%A8re_G%C3%A9nie_Electrom%C3%A9canique">Génie
+                                                Electromécanique </a>
+                                        </div>
+                                    </div>
+
+
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-content-center">
+
+                                    <div class="d-flex flex-row">
+                                        <i class="bi bi-arrow-right-circle"></i>
+                                        <div class="ml-2">
+
+                                            <a href="http://www.ensam-casa.ma/Fili%C3%A8re_G%C3%A9nie_M%C3%A9canique">Génie
+                                                Mécanique </a>
+                                        </div>
+                                    </div>
+
+
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-content-center">
+
+                                    <div class="d-flex flex-row">
+                                        <i class="bi bi-arrow-right-circle"></i>
+                                        <div class="ml-2">
+
+                                            <a href="http://www.ensam-casa.ma/Fili%C3%A8re_G%C3%A9nie_Industriel">Génie
+                                                Industriel </a>
+                                        </div>
+                                    </div>
+
+
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-content-center">
+
+                                    <div class="d-flex flex-row">
+                                        <i class="bi bi-arrow-right-circle"></i>
+                                        <div class="ml-2">
+
+                                            <a href="http://www.ensam-casa.ma/Fili%C3%A8re_Intelligence_Artificielle_&amp;_G%C3%A9nie_Informatique">Intelligence
+                                                Artificielle et Génie Informatique </a>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </li>
+
+
+                            </ul>
+
+                        </div>
+
+                        <section id="faq" class="faq">
+                            <div class="container-fluid aos-init aos-animate" data-aos="fade-up">
+                                <div class="container">
+                                    <div class="section-title">
+                                        <h3>AVANTAGES</h3>
+                                    </div>
+                                </div>
+                                <div class="row gy-4">
+                                    <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+                                        <div class="content px-xl-5">
+                                        </div>
+                                        <div class="accordion accordion-flush px-xl-8" id="faqlist">
+                                            <div class="accordion-item aos-init aos-animate" data-aos="fade-up"
+                                                 data-aos-delay="200">
+                                                <h3 class="accordion-header">
+                                                    <button class="accordion-button collapsed num" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#faq-content-1" aria-expanded="false">
+
+                                                        Un accès sélectif pour
+                                                        un apprentissage productif
+                                                    </button>
+                                                </h3>
+                                                <div id="faq-content-1" class="accordion-collapse collapse"
+                                                     data-bs-parent="#faqlist" style="">
+                                                    <div class="accordion-body">
+                                                        <p>En choisissant d’intégrer l’ENSAM-Casablanca, vous optez pour
+                                                            une formation d’ingénieurs de référence. L’accès en première
+                                                            année de l’ENSAM est réservé aux élèves ayant obtenu :</p>
+                                                        <ul>
+                                                            <li>Un baccalauréat scientifique (Sciences Mathématiques A
+                                                                ou B, Sciences Expérimentales)
+                                                            </li>
+                                                            <li>un baccalauréat technique.</li>
+                                                        </ul>
+                                                        L’accès en troisième et quatrième année de l’ENSAM est réservé
+                                                        aux élèves ayant réussi :
+                                                        <ul>
+                                                            <li>le concours national communs et titulaires des diplômes
+                                                                de DUT, DEUG, DEUST, BTS, DTS, license ou tout diplôme
+                                                                reconnu
+                                                            </li>
+                                                            <li>équivalent.</li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div><!-- # Faq item-->
+
+                                            <div class="accordion-item aos-init aos-animate" data-aos="fade-up"
+                                                 data-aos-delay="300">
+                                                <h3 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#faq-content-2" aria-expanded="false">
+
+                                                        Une pédagogie
+                                                        attrayante pour un métier d’avenir
+                                                    </button>
+                                                </h3>
+                                                <div id="faq-content-2" class="accordion-collapse collapse"
+                                                     data-bs-parent="#faqlist" style="">
+                                                    <div class="accordion-body">
+                                                        <p>80% de la formation à l’ENSAM-Casablanca est basée sur les
+                                                            sciences et techniques. Elle donne accès à de nombreux
+                                                            secteurs industriels porteurs (automobile, aéronautique,
+                                                            mécatronique, énergie…). 20% de la formation est centrée sur
+                                                            la pratique et à la maîtrise de l’ingénierie de projet, aux
+                                                            techniques de communication, au travail en équipe et à la
+                                                            gestion de l’entreprise. Ces disciplines apportent aux
+                                                            étudiants-ingénieurs les compétences managériales
+                                                            indispensables à leur futur métier et leur permet d’être
+                                                            immédiatement opérationnels dans le monde des
+                                                            entreprises.</p>
+                                                    </div>
+                                                </div>
+                                            </div><!-- # Faq item-->
+
+                                            <div class="accordion-item aos-init aos-animate" data-aos="fade-up"
+                                                 data-aos-delay="400">
+                                                <h3 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#faq-content-3" aria-expanded="false">
+
+
+                                                        Une formation axée sur
+                                                        l’entreprise pour une insertion réussie
+                                                    </button>
+                                                </h3>
+                                                <div id="faq-content-3" class="accordion-collapse collapse"
+                                                     data-bs-parent="#faqlist">
+                                                    <div class="accordion-body">
+                                                        L’intégration dans l’entreprise, par le biais des stages de
+                                                        découverte, d’ingénieur et le Projet de fin d’étude, fait partie
+                                                        intégrante de la formation de l’ingénieur de l’ENSAM.
+                                                        L’enseignement couvre des domaines étendus selon trois options
+                                                        de formations en étroite relation avec les secteurs industriels
+                                                        porteurs et les enjeux sociétaux prioritaires :
+                                                        <ul>
+                                                            <li>Conception des Produits Nouveaux (CPN)</li>
+                                                            <li>Construction d’Ouvrages Métalliques (COM)</li>
+                                                            <li>Efficacité et Performance Energétique Industrielle
+                                                                (EFPEI)
+                                                            </li>
+                                                        </ul>
+                                                        La formation délivrée permet aussi aux jeunes ingénieurs de
+                                                        s’orienter vers des fonctions types bureaux d’études, Industrie
+                                                        automobile, aéronautique, navale et ferroviaire …
+
+                                                    </div>
+                                                </div>
+                                            </div><!-- # Faq item-->
+
+                                            <div class="accordion-item aos-init aos-animate" data-aos="fade-up"
+                                                 data-aos-delay="500">
+                                                <h3 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#faq-content-4" aria-expanded="false">
+
+                                                        Un partenariat large pour plus
+                                                        d’ouverture
+                                                    </button>
+                                                </h3>
+                                                <div id="faq-content-4" class="accordion-collapse collapse"
+                                                     data-bs-parent="#faqlist">
+                                                    <div class="accordion-body">
+                                                        <p>Les partenariats pédagogiques constituent un axe
+                                                            incontournable du développement de l’école. Au niveau
+                                                            national, l’école fait partie du réseau national des grandes
+                                                            écoles d’ingénieurs. A l’international, l’ENSAM a développé
+                                                            des liens forts avec de grandes écoles d’ingénieur en France
+                                                            comme l’UTC de Belfort Montbéliard, l’ENSAM Paris-Tech et le
+                                                            réseau des INSA de France. Certes, dans une ère de
+                                                            mondialisation des efforts sont toujours déployés pour une
+                                                            grande ouverture sur l’international. Les relations
+                                                            industrielles de l’ENSAM ne cessent de s’accroitre dans un
+                                                            tissu industriel casablancais assez développé et assez
+                                                            varié.</p>
+                                                    </div>
+                                                </div>
+                                            </div><!-- # Faq item-->
+
+                                            <div class="accordion-item aos-init aos-animate" data-aos="fade-up"
+                                                 data-aos-delay="600">
+                                                <h3 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#faq-content-5" aria-expanded="false">
+
+                                                        Un cadre de travail
+                                                        privilégié pour une vie étudiante active et citoyenne
+                                                    </button>
+                                                </h3>
+                                                <div id="faq-content-5" class="accordion-collapse collapse"
+                                                     data-bs-parent="#faqlist">
+                                                    <div class="accordion-body">
+                                                        <p>Pour rendre l’école plus dynamique et vivante, l’association
+                                                            des élèves, à travers ses clubs, propose aux étudiants une
+                                                            multitude d’activités allant du domaine artistique au
+                                                            domaine technique. Elle assure l’animation et la gestion de
+                                                            la vie étudiante et fédère plus de 15 clubs et associations
+                                                            qui ont pour objectif le développement personnel des élèves
+                                                            ingénieurs de l’ENSAM-Casablanca.</p>
+                                                    </div>
+                                                </div>
+                                            </div><!-- # Faq item-->
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </section>
                     </div>
-                  </div>
+                </article>
+                <!-- End blog entry -->
+            </div>
+            <!-- End blog entries list -->
+
+            <div class="col-lg-4">
+                <div style="background-color: white;" class="sidebar">
+                    <h4>LIENS DIRECTS</h4>
+                    <div class="sidebar-item categories">
+                        <ul>
+                            {% show_menu 0 0 %}
+
+                        </ul>
+                        <!-- End sidebar categories -->
+                    </div>
+
+                    <h3 class="sidebar-title">LES PLUS RECENTS</h3>
+                    <div class="sidebar-item recent-posts">
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">HUAWEI ICT COMPETITION 2023-2024 NATIONAL PHASE</a></h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">Avis d’inscription au cycle doctoral 2023-2024</a></h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">Liste des candidats à convoquer à l'entretien pour..</a></h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">The fifth International Conference on Smart Applic...</a>
+                            </h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">إعلان عن فتح باب الترشيح لشغل مناصب رؤساء المصالح...</a></h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">International Conference on Friendly Mobility and...</a></h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">الرتشـيحات للتسـجيل في تكوينـات الدكتـوراه برسـم ا...</a>
+                            </h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">Résultats du concours commun d’accès en première a...</a>
+                            </h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">Réinscription en Doctorat pour l'Année Universitai...</a>
+                            </h4>
+                        </div>
+                        <div class="post-item clearfix">
+                            <h4><a href="blog-single.html">Liste des Admis du Concours National Commun à l'Ec...</a>
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- End sidebar recent posts -->
                 </div>
-              </section>
+                <!-- End sidebar -->
             </div>
-          </article>
-          <!-- End blog entry -->
+            <!-- End blog sidebar -->
         </div>
-        <!-- End blog entries list -->
-
-        <div class="col-lg-4">
-          <div class="sidebar">
-            <h4>LIENS DIRECTS</h4>
-            <div class="sidebar-item categories">
-              <ul>
-                {% show_menu 0 0 %}
-                }
-              </ul>
-              <!-- End sidebar categories -->
-            </div>
-
-            <h3 class="sidebar-title">LES PLUS RECENTS</h3>
-            <div class="sidebar-item recent-posts">
-              <div class="post-item clearfix">
-                <h4><a href="blog-single.html">HUAWEI ICT COMPETITION 2023-2024 NATIONAL PHASE</a></h4>
-              </div>
-              <div class="post-item clearfix">
-                <h4><a href="blog-single.html">Avis d’inscription au cycle doctoral 2023-2024</a></h4>
-              </div>
-              <div class="post-item clearfix">
-                <h4><a href="blog-single.html">Liste des candidats à convoquer à l'entretien pour..</a></h4>
-              </div>
-              <div class="post-item clearfix">
-                <h4><a href="blog-single.html">The fifth International Conference on Smart Applic...</a></h4>
-              </div>
-              <div class="post-item clearfix">
-                <h4><a href="blog-single.html">إعلان عن فتح باب الترشيح لشغل مناصب رؤساء المصالح...</a></h4>
-              </div>
-              <div class="post-item clearfix">
-                <h4><a href="blog-single.html">International Conference on Friendly Mobility and...</a></h4>
-              </div>
-              <div class="post-item clearfix">
-                <h4><a href="blog-single.html">الرتشـيحات للتسـجيل في تكوينـات الدكتـوراه برسـم ا...</a></h4>
-              </div> <div class="post-item clearfix">
-                <h4><a href="blog-single.html">Résultats du concours commun d’accès en première a...</a></h4>
-              </div> <div class="post-item clearfix">
-                <h4><a href="blog-single.html">Réinscription en Doctorat pour l'Année Universitai...</a></h4>
-              </div> <div class="post-item clearfix">
-                <h4><a href="blog-single.html">Liste des Admis du Concours National Commun à l'Ec...</a></h4>
-              </div>
-            </div>
-            <!-- End sidebar recent posts -->
-          </div>
-          <!-- End sidebar -->
-        </div>
-        <!-- End blog sidebar -->
-      </div>
     </div>
-  </section>
+</section>
 {% endblock %}

@@ -1,190 +1,260 @@
 {% load static %}
-<section class="pt-5 pb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <center>
-                        <h1 style="color:#1F5793">Communiqués Officiels</h1>
-                    </center>
-                </div>
-            </div>
-            <div class="col-6 text-right">
-                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                    <i class="fa fa-arrow-left"></i>
-                </a>
-                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                    <i class="fa fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">The fifth International Conference on Smart
-                                                Applications and Data
-                                                Analysis for Smart Cyber-Physical Systems (SADASC’24)</p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
+<div class="section-title mt-4">
+        <center>
+             <h1 style="color:#1F5793">Communiqués Officiels</h1>
+        </center>
+    </div>
 
 
-                                        </div>
+<div style="background:transparent;"  class="carousel-wrapper">
 
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">
-                                                إعلان عن فتح باب الترشيح لشغل مناصب رؤساء المصالح بالمدرسة الوطنية
-                                                العليا
-                                                للفنون و المهن بالدار البيضاء
-                                            </p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
+    <div  class="carousel mt-3" data-flickity>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">
-                                                الرتشـيحات للتسـجيل في تكوينـات الدكتـوراه برسـم الموسم الجامعـي
-                                                2023-2024
-                                            </p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
+        <div style="background-color: white;"  class="carousel-cell">
+            <h6>The fifth International Conference on Smart
+                Applications and Data
+                Analysis for Smart Cyber-Physical Systems (SADASC’24)</h6>
 
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                           <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to
-                                                additional content.</p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to
-                                                additional content.</p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to
-                                                additional content.</p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to
-                                                additional content.</p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to
-                                                additional content.</p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img alt="" class="img-fluid"
-                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">
-                                        <div class="card-body">
-                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to
-                                                additional content.</p>
-                                            <div class="d-grid gap-2"><a class="btn btn-primary"
-                                                                         href="{%url 'afficher' 1 %}">Afficher</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <a class="btn btn-primary more" href="{%url 'afficher' 1 %}">Afficher</a>
+            <img src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}"/>
+            <div class="line"></div>
+            <div class="price">
+                <span>20/12/2023</span>
             </div>
         </div>
+        <div style="background-color: white;"  class="carousel-cell">
+            <h6>إعلان عن فتح باب الترشيح لشغل مناصب رؤساء المصالح بالمدرسة الوطنية
+                العليا
+                للفنون و المهن بالدار البيضاء</h6>
+            <a class="btn btn-primary more" href="{%url 'afficher' 1 %}">Afficher</a>
+            <img src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}"/>
+            <div class="line"></div>
+            <div class="price">
+                <span>20/12/2023</span>
+            </div>
+        </div>
+        <div style="background-color: white;"  class="carousel-cell">
+            <h6>الرتشـيحات للتسـجيل في تكوينـات الدكتـوراه برسـم الموسم الجامعـي
+                2023-2024</h6>
+            <a class="btn btn-primary more" href="{%url 'afficher' 1 %}">Afficher</a>
+            <img src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}"/>
+            <div class="line"></div>
+            <div class="price">
+                <span>20/12/2023</span>
+            </div>
+        </div>
+        <div style="background-color: white;"  class="carousel-cell">
+            <h6>With supporting text below as a natural lead-in to
+                additional content.</h6>
+            <a class="btn btn-primary more" href="{%url 'afficher' 1 %}">Afficher</a>
+            <img src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}"/>
+            <div class="line"></div>
+            <div class="price">
+                <span>20/12/2023</span>
+            </div>
+        </div>
+        <div style="background-color: white;"  class="carousel-cell">
+            <h6>With supporting text below as a natural lead-in to
+                additional content.</h6>
+            <a class="btn btn-primary more" href="{%url 'afficher' 1 %}">Afficher</a>
+            <img src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}"/>
+            <div class="line"></div>
+            <div class="price">
+                <span>20/12/2023</span>
+            </div>
+        </div>
+
     </div>
-</section>
+
+</div>
+
+
+<!--<section class="pt-5 pb-5">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12">-->
+<!--                <div class="section-title">-->
+<!--                    <center>-->
+<!--                        <h1 style="color:#1F5793">Communiqués Officiels</h1>-->
+<!--                    </center>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-6 text-right">-->
+<!--                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">-->
+<!--                    <i class="fa fa-arrow-left"></i>-->
+<!--                </a>-->
+<!--                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">-->
+<!--                    <i class="fa fa-arrow-right"></i>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="col-12">-->
+<!--                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">-->
+
+<!--                    <div class="carousel-inner">-->
+<!--                        <div class="carousel-item active">-->
+<!--                            <div class="row">-->
+
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">The fifth International Conference on Smart-->
+<!--                                                Applications and Data-->
+<!--                                                Analysis for Smart Cyber-Physical Systems (SADASC’24)</p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+
+
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">-->
+<!--                                                إعلان عن فتح باب الترشيح لشغل مناصب رؤساء المصالح بالمدرسة الوطنية-->
+<!--                                                العليا-->
+<!--                                                للفنون و المهن بالدار البيضاء-->
+<!--                                            </p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">-->
+<!--                                                الرتشـيحات للتسـجيل في تكوينـات الدكتـوراه برسـم الموسم الجامعـي-->
+<!--                                                2023-2024-->
+<!--                                            </p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="carousel-item">-->
+<!--                            <div class="row">-->
+
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">With supporting text below as a natural lead-in to-->
+<!--                                                additional content.</p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">With supporting text below as a natural lead-in to-->
+<!--                                                additional content.</p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">With supporting text below as a natural lead-in to-->
+<!--                                                additional content.</p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="carousel-item">-->
+<!--                            <div class="row">-->
+
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">With supporting text below as a natural lead-in to-->
+<!--                                                additional content.</p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">With supporting text below as a natural lead-in to-->
+<!--                                                additional content.</p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4 mb-3">-->
+<!--                                    <div class="card">-->
+<!--                                        <img alt="" class="img-fluid"-->
+<!--                                             src="{% static 'assets/img/communique_2023_10_12_11_43_04.png' %}">-->
+<!--                                        <div class="card-body">-->
+<!--                                            <h4 style="color: #0a53be" class="card-title">20/12/2023</h4>-->
+<!--                                            <p class="card-text">With supporting text below as a natural lead-in to-->
+<!--                                                additional content.</p>-->
+<!--                                            <div class="d-grid gap-2"><a class="btn btn-primary"-->
+<!--                                                                         href="{%url 'afficher' 1 %}">Afficher</a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->

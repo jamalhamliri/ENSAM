@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 from django.shortcuts import render, redirect
 
@@ -6,6 +6,8 @@ from app.models import *
 
 
 def ent(request):
+    url = 'https://ent.univh2c.ma/uPortal/f/welcome/normal/render.uP'
+
     return HttpResponseRedirect('https://ent.univh2c.ma/uPortal/f/welcome/normal/render.uP')
 
 
@@ -23,7 +25,7 @@ def home(request):
 
 # def lire_pdf(request):
 #     file_path = os.path.join(settings.STATIC_ROOT, 'assets', 'reglement.pdf')
-#     return render(request, 'afficher_pdf.html', {'file_path': file_path})
+#     return render(request, 'redirect.html', {'file_path': file_path})
 
 
 def index(request):
