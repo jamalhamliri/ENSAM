@@ -1,7 +1,375 @@
-{% extends 'base.html' %}
-{% load cms_tags %}
+{% load cms_tags menu_tags sekizai_tags %}
 {% load static %}
-{% block content %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>{% page_attribute "page_title" %} ENSAM</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="http://www.ensam-casa.ma/assets/images/ensam2.png" rel="icon">
+    <link href="{% static  'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+
+        body {
+            /*background-color: #f7f7f7; !* Couleur de fond *!*/
+            background-image: url("{% static 'assets/img/zalij3.png' %}"); /* Image de fond */
+            background-repeat: repeat; /* Répétition de l'image sur le fond */
+            background-position: center; /* Position de l'image de fond */
+            opacity: 0.9; /* Opacité de l'arrière-plan */
+
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 40px;
+            margin-top: 2%;
+        }
+
+        .row {
+
+            font-size: 18px; /* Taille de la police pour le texte */
+        }
+
+        #footer .row {
+            background: #515d6a;
+        }
+
+        .section-title {
+            font-family: Rubik, sans-serif;
+            color: #07689f;
+            padding: 10px 0px;
+            font-weight: 600;
+            position: relative;
+            font-size: 30px;
+            padding-bottom: 10px;
+            text-transform: none;
+            line-height: 42px;
+            margin-bottom: 30px;
+        }
+
+        .section-title:after {
+            content: '';
+            width: 90px;
+            height: 3px;
+            padding-left: 5px;
+            background: #07689f;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .header {
+            position: relative;
+            border-bottom-right-radius: 50%;
+            background: #07689f;
+            overflow: hidden;
+            word-wrap: break-word;
+            min-height: 400px;
+            padding: 0 50px;
+            max-height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+        }
+
+        .header .title {
+            text-align: center;
+            margin: 0 auto;
+            width: 60%;
+            height: 100%;
+        }
+
+        .header .heading {
+            font-weight: 900;
+            color: #fafafa;
+            font-size: 45px;
+        }
+
+        @media screen and (max-width: 890px) {
+            .header .heading {
+                font-size: 30px;
+            }
+        }
+
+        .header .description {
+            color: #fff;
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .header {
+                padding: 0 0;
+            }
+
+            .header .title {
+                padding: 0 0;
+                width: 100%;
+            }
+
+            .header .description {
+                display: none;
+            }
+        }
+
+
+        .corps-professoral,
+        .corps-administratif {
+            padding: 0 10px;
+        }
+
+        .corps-professoral .card,
+        .corps-administratif .card {
+            background: #fff;
+            margin: 0 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .corps-professoral h4.card-title,
+        .corps-administratif h4.card-title {
+            min-height: 60px;
+            color: #173b5b;
+            position: relative;
+        }
+
+        .corps-professoral h4.card-title:after,
+        .corps-administratif h4.card-title:after {
+            content: '';
+            width: 90px;
+            height: 3px;
+            padding-left: 5px;
+            background: #07689f;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .corps-professoral .blue-text,
+        .corps-administratif .blue-text {
+            color: #a2a2a2;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .corps-professoral .card-text,
+        .corps-administratif .card-text {
+            color: #a2a2a2;
+            height: 30px;
+        }
+
+        .corps-professoral span,
+        .corps-administratif span {
+            color: #173b5b;
+        }
+
+        .corps-professoral .sous-title,
+        .corps-administratif .sous-title {
+            color: rgba(29, 45, 80, 0.7);
+            font-weight: 500;
+            font-size: 19px;
+            border: solid 2px #ff7e67;
+            background: #e3dfc8;
+            padding: 5px 5px;
+        }
+
+        .corps-professoral .p1,
+        .corps-professoral .p2,
+        .corps-professoral .p3,
+        .corps-administratif .p1,
+        .corps-administratif .p2,
+        .corps-administratif .p3 {
+            position: relative;
+            overflow: hidden;
+            transition: 0.9 linear;
+        }
+
+        .section-title {
+            font-family: Rubik, sans-serif;
+            color: #07689f;
+            padding: 10px 0px;
+            font-weight: 600;
+            position: relative;
+            font-size: 30px;
+            padding-bottom: 10px;
+            text-transform: none;
+            line-height: 42px;
+            margin-bottom: 30px;
+        }
+
+        .section-title:after {
+            content: '';
+            width: 90px;
+            height: 3px;
+            padding-left: 5px;
+            background: #07689f;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+    </style>
+
+    {% render_block "css" %}
+
+</head>
+
+<body>
+
+{% cms_toolbar %}
+
+<!-- ======= Header ======= -->
+{% load cms_tags menu_tags sekizai_tags %}
+{% load static %}
+<style>
+    .mon-menu-personnalise {
+        list-style: none;
+        padding: 0;
+        z-index: 500;
+    }
+
+    .mon-menu-personnalise > li {
+        display: inline-block;
+        margin-right: 0px;
+        margin-left: 0px;
+        position: relative;
+    }
+
+    .mon-menu-personnalise > li > a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 15px;
+        display: block;
+        transition: color 0.3s ease;
+    }
+
+    .mon-menu-personnalise.header-scrolled > li > a {
+        color: white;
+    }
+
+    .mon-menu-personnalise ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #1F5793;
+        padding: 10px 0;
+        border: 1px solid #ccc;
+    }
+
+    .mon-menu-personnalise li:hover > ul {
+        display: block;
+    }
+
+    .mon-menu-personnalise ul li {
+        display: block;
+        margin-right: 0;
+        white-space: nowrap;
+    }
+
+    .mon-menu-personnalise ul li a {
+        padding: 8px 20px;
+        color: white;
+    }
+
+    .mon-menu-personnalise ul li a:hover {
+        color: white;
+    }
+
+
+</style>
+
+
+<!--<header id="header" class="d-flex align-items-center" style="background-color: #1F5793; width: 105%;">-->
+<!--     <div class="container d-flex align-items-center" >-->
+
+
+<div style="width: 100%; z-index: 1000;background-color: rgba(255, 255, 255, 0.8);">
+    <div>
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+
+            <div style="height: 150px;width: 300px;margin-left:-30px;" class="col-lg-2"><a href="/">
+                <img style="height: 150px;width: 200px;" src="{% static 'assets/img/logopri.png' %}"
+                     alt="ENSAM Logo"/></a>
+            </div>
+
+
+            <div style="height: 150px;width: 300px; margin:0;" class="col-lg-2"><a href="/">
+                <img style="height: 150px;width:300px;" src="{% static 'assets/img/logoENsam.png' %}"
+                     alt="ENSAM Logo"/></a>
+            </div>
+
+            <div class="col-lg-2"><a href="/">
+                <img style="height: 150px;width: 450px;" src="{% static 'assets/img/ecolepri.png' %}"
+                     alt="ENSAM Logo"/></a>
+            </div>
+
+
+            <div class="col-lg-1">
+            </div>
+
+
+            <div style="height: 150px;width: 150px;" class="col-lg-2 ">
+                <img style="max-width: none;height: initial;display: inline; " src="{% static 'assets/img/min.png' %}"
+                     alt="Min Logo"/>
+                <div class="col-lg-1">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <header id="header" class=" d-flex align-items-center" style="background-color: #1F5793; width: 100%;">
+        <div class="container d-flex align-items-center">
+            <!-- Votre contenu ici -->
+            <nav id="navbar" class="navbar">
+                <ul style="color: white;" class="mon-menu-personnalise" id="menu">
+                    <!-- Contenu du menu -->
+                    <!-- Utilisation de votre balise Django pour afficher le menu -->
+                    {% show_menu 0 100 100 100 %}
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>
+
+
+</div>
+
+<!-- End Header -->
+
 <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.min.css">
 <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
 <style>@import url("https://fonts.googleapis.com/css?family=Hind:400,700");
@@ -232,7 +600,12 @@ h3 {
                          src="{%static 'assets/img/part/topslide.jpeg' %}" width="200">
                 </a>
             </div>
-
+            <!--            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">-->
+            <!--                <a target="_blank" href="https://expleo.com/global/en/" title="Expleo">-->
+            <!--                    <img width="200" height="70"-->
+            <!--                         src="http://www.ensam-casa.ma/assets/images/videoImage_2023_08_03_10_27_23.jpg" alt="">-->
+            <!--                </a>-->
+            <!--            </div>-->
             <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                 <a href="https://aws.amazon.com/fr/certification/" target="_blank" title="Amazon">
                     <img alt=""
@@ -368,4 +741,27 @@ h3 {
         src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
 
-{% endblock %}
+<br>
+
+
+<!-- ======= Footer ======= -->
+{% include 'footer.html' %}
+<!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+{% render_block "js" %}
+</body>
+
+</html>
