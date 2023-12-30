@@ -205,7 +205,7 @@ CMS_TEMPLATES = (
     ('Ecole/presentation.html', 'Ecole/Presentation'),
     ('Ecole/mot_du_directeur.html', 'Ecole/mot_du_directeur'),
     ('Ecole/Communiques_officiels.html', 'Ecole/Communiques_officiels'),
-    ('Ecole/Corps_professoral.html', 'Ecole/Corps_professoral'),
+    ('Ecole/corps_professoral.html', 'Ecole/Corps_professoral'),
     ('Ecole/recrutements.html', 'Ecole/Recrutements'),
     ('Ecole/reglement_interieur.html', 'Ecole/Reglement_Interieur'),
     ('Ecole/appel_offres.html', 'Ecole/appel_offres'),

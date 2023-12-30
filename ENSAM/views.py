@@ -42,72 +42,72 @@ def afficher(request, article_id):
 
 
 def api(request):
-    return render(request, 'formation/prepa/api.html')
+    return render(request, 'Formation/prepa/api.html')
 
 
 def GE(request):
-    return render(request, 'formation/ing/GE.html')
+    return render(request, 'Formation/ing/GE.html')
 
 
 def GM(request):
-    return render(request, 'formation/ing/GM.html')
+    return render(request, 'Formation/ing/GM.html')
 
 
 def MSE(request):
-    return render(request, 'formation/ing/MSE.html')
+    return render(request, 'Formation/ing/MSE.html')
 
 
 def IAGI(request):
-    return render(request, 'formation/ing/IAGI.html')
+    return render(request, 'Formation/ing/IAGI.html')
 
 
 def CIME(request):
-    return render(request, 'formation/Master/CIME.html')
+    return render(request, 'Formation/Master/CIME.html')
 
 
 def GCBCM(request):
-    return render(request, 'formation/Master/GCBCM.html')
+    return render(request, 'Formation/Master/GCBCM.html')
 
 
 def MITD(request):
-    return render(request, 'formation/Master/MITD.html')
+    return render(request, 'Formation/Master/MITD.html')
 
 
 def AISE(request):
-    return render(request, 'formation/Licence/AISE.html')
+    return render(request, 'Formation/Licence/AISE.html')
 
 
 def CSAA(request):
-    return render(request, 'formation/Licence/CSAA.html')
+    return render(request, 'Formation/Licence/CSAA.html')
 
 
 def DI(request):
-    return render(request, 'formation/Licence/DI.html')
+    return render(request, 'Formation/Licence/DI.html')
 
 
 def DLSS(request):
-    return render(request, 'formation/Licence/DLSS.html')
+    return render(request, 'Formation/Licence/DLSS.html')
 
 
 def DWM(request):
-    return render(request, 'formation/Licence/DWM.html')
+    return render(request, 'Formation/Licence/DWM.html')
 
 
 def GC(request):
-    return render(request, 'formation/Licence/GC.html')
+    return render(request, 'Formation/Licence/GC.html')
 
 
 def IDAMI(request):
-    return render(request, 'formation/Licence/IDAMI.html')
+    return render(request, 'Formation/Licence/IDAMI.html')
 
 
 def MSI(request):
-    return render(request, 'formation/Licence/MSI.html')
+    return render(request, 'Formation/Licence/MSI.html')
 
 
 def QSE(request):
-    return render(request, 'formation/Licence/QSE.html')
+    return render(request, 'Formation/Licence/QSE.html')
 
 
 def TTS(request):
-    return render(request, 'formation/Licence/TTS.html')
+    return render(request, 'Formation/Licence/TTS.html')
